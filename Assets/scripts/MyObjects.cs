@@ -5,15 +5,12 @@ using UnityEngine;
 
 public class MyObjects : MonoBehaviour {
 
-    public static LinkedList<GameObject> walls;
-    public static LinkedList<GameObject> bullseyes;
+    public static LinkedList<GameObject> walls = new LinkedList<GameObject>();
+    public static LinkedList<GameObject> bullseyes = new LinkedList<GameObject>();
 
 
     // Use this for initialization
     void Start () {
-
-        walls = new LinkedList<GameObject>();
-        bullseyes = new LinkedList<GameObject>();
 	}
 	
 	// Update is called once per frame

@@ -12,7 +12,7 @@ public class GenerateHorizontalWalls : MonoBehaviour
     public GameObject BlueBullseye;
 
     private GameObject bullEye;
-    public const int PROBABILITY = 50;
+    public const int PROBABILITY = 60;
 
     public LinkedList<int> noWalls = new LinkedList<int>();
 
@@ -52,6 +52,7 @@ public class GenerateHorizontalWalls : MonoBehaviour
                 if (!noWalls.Contains(boxCount) && randomInt <= PROBABILITY)
                 {
 
+                    Debug.Log("creating wall");
                     wall = Instantiate(Wall);
                     wall.transform.position = new Vector3(initPosition.x, initPosition.y, initPosition.z);
 

@@ -31,6 +31,10 @@ public class GunScript : MonoBehaviour {
     public GameObject impactEffect;
     public AudioClip empty;
 
+    public static bool fireIsPressed = false;
+    public static bool reloadIsPressed = false;
+
+
     // private float nextTimeToFire = 0f;
 
     // Update is called once per frame
@@ -42,6 +46,7 @@ public class GunScript : MonoBehaviour {
         // left mouse button used for shooting
         if (fireOVR > 0.0f || Input.GetButtonDown("Fire1")) // && Time.time >= nextTimeToFire
         {
+            Debug.Log("fire");
             //nextTimeToFire = Time.time + 1f / fireRate;
             if (magazine > 0)
             {
@@ -55,12 +60,16 @@ public class GunScript : MonoBehaviour {
                 ShootEmpty();
                 newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmissionMap", white);
             }
+
+            fireIsPressed = true;
         }
 
         // right mouse button used for reloading
-        if (reloadOVR > 0.0f || Input.GetButtonDown("Fire2"))
+        if (!reloadIsPressed && reloadOVR > 0.0f || Input.GetButtonDown("Fire2"))
         {
             RaycastHit hit;
+            Debug.Log("reload");
+
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 3f)) // need to be 5 units away to reload
             {
                 //Debug.Log(hit.transform.name); // prints out to console
@@ -89,6 +98,19 @@ public class GunScript : MonoBehaviour {
                 }
             }
 
+            reloadIsPressed = true;
+        }
+
+        if (reloadOVR == 0.0f)
+        {
+
+            reloadIsPressed = false;
+        }
+
+        if (fireOVR == 0.0f)
+        {
+
+            fireIsPressed = false;
         }
     }
 
