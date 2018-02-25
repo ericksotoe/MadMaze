@@ -36,8 +36,11 @@ public class GunScript : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        float fireOVR = OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger);
+        float reloadOVR = OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger);
         // left mouse button used for shooting
-        if (Input.GetButtonDown("Fire1")) // && Time.time >= nextTimeToFire
+        if (fireOVR > 0.0f || Input.GetButtonDown("Fire1")) // && Time.time >= nextTimeToFire
         {
             //nextTimeToFire = Time.time + 1f / fireRate;
             if (magazine > 0)
@@ -55,7 +58,7 @@ public class GunScript : MonoBehaviour {
         }
 
         // right mouse button used for reloading
-        if (Input.GetButtonDown("Fire2"))
+        if (reloadOVR > 0.0f || Input.GetButtonDown("Fire2"))
         {
             RaycastHit hit;
             if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 3f)) // need to be 5 units away to reload
@@ -84,8 +87,6 @@ public class GunScript : MonoBehaviour {
                         newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmissionMap", blue);
                     }
                 }
-
-                owrinput
             }
 
         }
