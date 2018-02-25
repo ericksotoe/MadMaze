@@ -6,7 +6,6 @@ public class Target : MonoBehaviour {
     // health of the target
     public float health = 30f;
     //public GameObject currTarget;
-
     
 
     //public GameObject brokenCrate;
@@ -52,7 +51,6 @@ public class Target : MonoBehaviour {
         }
 
     }
-	
 
     void Die()
     {

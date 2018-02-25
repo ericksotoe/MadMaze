@@ -6,6 +6,10 @@ public class GenerateVerticalWalls : MonoBehaviour {
 
     public GameObject Wall;
     private GameObject wall;
+    public GameObject RedBullswye;
+    public GameObject GreenBullseye;
+    public GameObject BlueBullseye;
+    private GameObject bullEye;
 
     public const int PROBABILITY = 50;
 

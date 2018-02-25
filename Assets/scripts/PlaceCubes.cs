@@ -31,7 +31,7 @@ public class PlaceCubes : MonoBehaviour {
         int randomInt = 0;
         int cubeRandom = 0;
 
-        for (int i = 0; i < Constants.MAZE_SIZE; i++)
+        for (int i = 0; i < Constants.MAZE_SIZE - 1; i++)
         {
 
             for (int j = 0; j < Constants.MAZE_SIZE; j++)

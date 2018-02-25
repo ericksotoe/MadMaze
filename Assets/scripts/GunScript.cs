@@ -22,7 +22,7 @@ public class GunScript : MonoBehaviour {
     public float damage = 10f;
     public float range = 400f;
     public float impactForce = 30f;
-    public int magazine = 0;
+    private int magazine = 0;
     public static AmmoType currAmmo = AmmoType.EMPTY;
     //public float fireRate = 15f;
 
@@ -47,9 +47,10 @@ public class GunScript : MonoBehaviour {
             }
             else if (magazine == 0)
             {
+                Debug.Log("it's empty");
                 currAmmo = AmmoType.EMPTY;
                 ShootEmpty();
-                newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmmisionMap", white);
+                newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmissionMap", white);
             }
         }
 
@@ -70,19 +71,21 @@ public class GunScript : MonoBehaviour {
                     if ((int)hit.rigidbody.mass == 499)
                     {
                         this.Reload(AmmoType.RED);
-                        newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmmisionMap", red);
+                        newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmissionMap", red);
                     }
                     else if ((int)hit.rigidbody.mass == 999)
                     {
                         this.Reload(AmmoType.GREEN);
-                        newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmmisionMap", green);
+                        newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmissionMap", green);
                     }
                     else if ((int)hit.rigidbody.mass == 1500)
                     {
                         this.Reload(AmmoType.BLUE);
-                        newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmmisionMap", blue);
+                        newMat.GetComponent<MeshRenderer>().material.SetTexture("_EmissionMap", blue);
                     }
                 }
+
+                owrinput
             }
 
         }
